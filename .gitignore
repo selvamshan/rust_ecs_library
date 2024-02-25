@@ -1,0 +1,20 @@
+# By Default, Ignore any .*, except .gitignore
+.*
+!.gitignore
+
+# -- Rust
+# For .cargo/config.toml
+!.cargo/
+
+## build 
+/target
+
+# For blueprint ignore Cargo.lock
+# (commit Cargo.lock for real project)
+Cargo.lock
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target
