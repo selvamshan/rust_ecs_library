@@ -5,8 +5,9 @@ pub type Result<T>  = core::result::Result<T, Error>;
 
 #[derive(Debug)]
 pub enum Error {
-    ComponentNotFound,
-    ComponetNotRegister(String),
+    ComponentNotFound(String),
+    ComponetNotRegister(String),	
+	EntityDoesNotExist(String)
 }
 
 

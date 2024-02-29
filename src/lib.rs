@@ -3,9 +3,9 @@ use std::any::Any;
 
 mod resources;
 mod entity;
-mod error;
 
-use entity::Entites;
+use crate::entity::query::Query;
+use entity::{Entites, Result};
 use resources::Resource;
 
 
@@ -88,8 +88,29 @@ impl World {
     pub fn create_entity(&mut self) -> &mut Entites {
         self.entities.create_entity()
     }
+
+    pub fn query(&self) -> Query{
+        Query::new(&self.entities)
+    }
+
+    pub fn delete_component_by_entity_id<T:Any>(&mut self, index:usize) -> Result<()> {
+        self.entities.delete_component_by_entity_id::<T>(index)        
+    }
+  
+    pub fn add_component_to_entity_by_id(&mut self, data: impl Any, index:usize)  -> Result<()> {
+        self.entities.add_component_to_entity_by_id(data, index)
+    }
+
+    pub fn delete_entity_by_id(&mut self, index:usize) -> Result<()> {
+        self.entities.delete_entity_by_id(index)?;
+
+        Ok(())     
+    }
+
 }
 
 
 #[cfg(test)]
-mod tests {}
+mod tests {
+
+}
